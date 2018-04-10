@@ -11,11 +11,11 @@ describe('chat room', () => {
     it('takes a socket, assigns a username, and stores by username', () => {
         const clients = chatRoom.clients;
         const newClient = {};
-        const username = clients.add(newClient);
+        const username = chatRoom.add(newClient);
         const added = clients.has(username);
-        const clientObject = clients.get(username);
+        const clientObject = chatRoom.getClient(username);
         assert.strictEqual(added, true);
         assert.strictEqual(clientObject.username, username);
-        assert.deepStrictEqual(clientObject, newClient);
+        assert.strictEqual(clientObject, newClient);
     });
 });
