@@ -11,18 +11,12 @@ describe('E2E', () => {
 
     let client1 = null;
     before(done => {
-        client1 = net.connect(PORT, () => {
-            client1.setEncoding('utf8');
-            done();
-        });
+        client1 = net.connect(PORT, done);
     });
     
     let client2 = null;
     before(done => {
-        client2 = net.connect(PORT, () => {
-            client2.setEncoding('utf8');
-            done();
-        });
+        client2 = net.connect(PORT, done);
     });
 
     after(() => {
