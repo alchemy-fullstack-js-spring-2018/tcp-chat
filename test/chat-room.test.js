@@ -29,4 +29,15 @@ describe('chat room', () => {
         assert.strictEqual(clientObject, newClient);
         assert.strictEqual(clientObject.username, newName);        
     });
+
+    it('will not rename to existing user name', () => {
+        const newClient2 = {};
+        const originalName2 = chatRoom.add(newClient2);
+        const notAllowed = chatRoom.rename(originalName, originalName2);
+        const clientObject = chatRoom.getClient(originalName);
+        const clientObject2 = chatRoom.getClient(originalName2);
+        assert.strictEqual(notAllowed, false);
+        assert.strictEqual(clientObject, newClient);
+        assert.strictEqual(clientObject2, newClient2);
+    });
 });
