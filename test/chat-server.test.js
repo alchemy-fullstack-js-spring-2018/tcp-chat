@@ -27,6 +27,7 @@ describe('E2E', () => {
 
     after(() => {
         chatServer.close();
+        client1.destroy();
     });
 
     it('welcomes the user', done => {
@@ -52,5 +53,14 @@ describe('E2E', () => {
         });
 
         client2.write('@dm:user1 I have a secret to tell you.');
+    });
+
+    it('notifies other users when a user leaves', done => {
+        client1.once('data', received => {
+            assert.equal(received, 'user2 has left the chat room.\n');
+            done();
+        });
+
+        client2.destroy();
     });
 });
