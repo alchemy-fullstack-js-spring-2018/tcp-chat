@@ -2,7 +2,7 @@ const assert = require('assert');
 const parseMessage = require('../lib/parse-message');
 
 describe('message parser', () => {
-    it('ignores strings that do not start with @', () => {
+    it('responds to strings that do not start with @ by returning a "prompt" command', () => {
         const failure = parseMessage('some text without @ at the beginning');
         assert.deepStrictEqual(failure, { command: 'prompt' });
     });
