@@ -4,7 +4,7 @@ const parseMessage = require('../lib/parse-message');
 describe('message parser', () => {
     it('ignores strings that do not start with @', () => {
         const failure = parseMessage('some text without @ at the beginning');
-        assert.strictEqual(failure, null);
+        assert.deepStrictEqual(failure, { command: 'prompt' });
     });
 
     it('converts a string into a command object', () => {
