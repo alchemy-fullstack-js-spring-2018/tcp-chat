@@ -27,8 +27,6 @@ describe('E2E', () => {
 
     after(() => {
         chatServer.close();
-        client1.destroy();
-        client2.destroy();
     });
 
     it('welcomes the user', done => {
